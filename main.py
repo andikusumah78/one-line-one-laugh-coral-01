@@ -16,9 +16,10 @@ it back.
 import os
 import sys
 
+# Fixed line (not generated): determinism — every run writes byte-identical output.
 LINE = "My AI asked for a raise, so I promoted it to middle management \u2014 now it schedules meetings about the meetings it used to cancel."
 
-MAX_CHARS = 200
+GATE_MAX_CHARS = 200
 
 
 def validate_line(line):
@@ -27,7 +28,7 @@ def validate_line(line):
         raise TypeError("line must be str")
     if not line.strip():
         raise ValueError("line must not be only whitespace")
-    if len(line) > MAX_CHARS:
+    if len(line) > GATE_MAX_CHARS:
         raise ValueError("line is %d chars, over the 200 limit" % len(line))
     line.encode("utf-8")
     return line
